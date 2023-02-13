@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: rgb(240, 248, 255);
+    text-align: center;
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+    background-image: url("https://cdn.discordapp.com/attachments/1073954830718091377/1074608529949868032/andrew-neel-jtsW--Z6bFw-unsplash.jpg");
+    background-size: cover;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h2,
+h3 {
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+/* HEADER */
+
+.top-header {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    top: 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.nav-links {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.1s;
+}
+
+.nav-links:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(255, 100, 100);
+}
+
+.nav-links:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* MAIN */
+
+main {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* ABOUT */
+.about {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.greeting {
+    font-size: 50px;
+}
+
+.greeting>a {
+    text-decoration: none;
+}
+
+.greeting>a:hover {
+    color: rgb(255, 100, 100);
+}
+
+.description {
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 20px;
+}
+
+/* PROJECTS */
+.projects {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.row {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-tile {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.thumbnail {
+    height: 90%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    filter: brightness(0.8);
+}
+
+.thumbnail.a {
+    background-image: url("https://cdn.discordapp.com/attachments/1073954830718091377/1074624504866820176/Screenshot_11.png");
+}
+
+.thumbnail.b {
+    background-image: url("https://cdn.discordapp.com/attachments/1073954830718091377/1074625277247881216/Screenshot_12.png");
+}
+
+.thumbnail.c {
+    background-image: url("https://cdn.discordapp.com/attachments/1073954830718091377/1074625277495361546/Screenshot_13.png");
+}
+
+.thumbnail.d {
+    background-image: url("https://cdn.discordapp.com/attachments/1073954830718091377/1074625277734424654/Screenshot_14.png");
+}
+
+.name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    height: 60px;
+    font-size: 20px;
+}
+
+.project-tile:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.2s;
+}
+
+.project-tile:hover>.name {
+    color: rgb(255, 100, 100);
+    transition: all 0.2s;
+}
+
+.project-tile:hover>.thumbnail {
+    filter: none;
+    transition: all 0.2s;
+}
+
+.project-tile:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: all 0.2s;
+}
+
+/* CONTACT */
+.contacts {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px;
+    width: 100%;
+    height: 100%;
+    gap: 5%;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10%;
+}
+
+.container.a {
+    justify-content: flex-end;
+}
+
+.container.b {
+    justify-content: flex-start;
+}
+
+.item {
+    height: 128px;
+    width: 128px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+}
+
+.item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 0.2s;
+}
+
+.item:active {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.item>img {
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 730px) {
+    .items {
+        flex-direction: column;
+        gap: 10%;
+    }
+
+    .container.a,
+    .container.b {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 650px) {
+    .project-tile {
+        width: 100%;
+    }
+
+    .projects {
+        height: 200vh;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    h1.greeting {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+/* ATTRIBUTIONS */
+.attributions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.attributions h2 {
+    font-size: 30px;
+}
+
+.attributions p {
+    font-family: 'Signika Negative', sans-serif;
+}
+
+.attributions a {
+    text-decoration: none;
+}
+
+.attributions a:hover {
+    color: rgb(255, 100, 100);
+}
+
+.attributions>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
