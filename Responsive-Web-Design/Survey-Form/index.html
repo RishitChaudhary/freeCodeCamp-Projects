@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Survey Form</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="https://freecodecamp.org" target="_blank">
+                <img id="logo" src="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg" alt="freeCodeCamp Logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <a class="navbar-item" href="https://www.freecodecamp.org/learn/" target="_blank">
+                <div class="nav-links">
+                    <p>Learn to code</p>
+                </div>
+            </a>
+            <a class="navbar-item" href="https://forum.freecodecamp.org/" target="_blank">
+                <div class="nav-links">
+                    <p>Forum</p>
+                </div>
+            </a>
+            <a class="navbar-item" href="https://www.freecodecamp.org/news/" target="_blank">
+                <div class="nav-links">
+                    <p>News</p>
+                </div>
+            </a>
+            <a class="navbar-item" href="https://www.freecodecamp.org/news/about/" target="_blank">
+                <div class="nav-links">
+                    <p>About</p>
+                </div>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <div class="title-and-text">
+            <div class="title">
+                <h1 id="title">freeCodeCamp Survey Form</h1>
+            </div>
+            <div class="description">
+                <p id="description"><i>Every survey you fill helps making the platform better.</i></p>
+            </div>
+        </div>
+        <form id="survey-form" action="https://freeCodeCamp.org" method="post">
+            <fieldset id="name-email-age">
+                <label id="name-label" for="name">Name<input type="text" id="name" name="name" placeholder="Enter your name" required></label>
+                <label id="email-label" for="email">Email<input type="email" id="email" name="email" placeholder="Enter your email" required></label>
+                <label id="number-label" for="number">Age <p>(optional)</p><input type="number" id="number" name="age" placeholder="Enter your age" min="13" max="120"></label>
+            </fieldset>
+            <fieldset id="dropdowns">
+                <label for="dropdown">What are you currently learning?<select name="dropdown" id="dropdown">
+                        <option disabled selected>Select a option</option>
+                        <option value="Web-Development">Web-Development</option>
+                        <option value="Android-Development">Android-Development</option>
+                        <option value="iOS-Development">iOS-Development</option>
+                        <option value="Software-Development">Software-Development</option>
+                        <option value="Blockchain-Development">Blockchain-Development</option>
+                        <option value="Other">Other</option>
+                    </select></label>
+                <label for="dropdown">What describes your current role?<select name="dropdown" id="dropdown">
+                        <option disabled selected>Select a option</option>
+                        <option value="Student">Student</option>
+                        <option value="part-time-job">Part Time Job</option>
+                        <option value="full-time-job">Full Time Job</option>
+                        <option value="part-time-learner">Part Time Learner</option>
+                        <option value="part-time-learner">Full time Learner</option>
+                        <option value="other">Other</option>
+                    </select></label>
+            </fieldset>
+            <fieldset id="radios-and-checkboxes">
+                <div id="user-recommend">
+                    <p>Would you recommend freeCodeCamp to your friends?</p>
+                    <label for="yes"><input type="radio" id="yes" value="yes" name="recommend" checked /> Yes, Definetly</label>
+                    <label for="maybe"><input type="radio" id="maybe" value="maybe" name="recommend" /> Possibly I would</label>
+                    <label for="dont-know"><input type="radio" id="dont-know" value="dont-know" name="recommend" /> Not sure if I would</label>
+                </div>
+                <div id="certification">
+                    <p>Which certification courses have you done from freeCodeCamp?</p>
+                    <label for="rwd"><input type="checkbox" value="rwd" id="rwd"> Responsive Web Design</label>
+                    <label for="jads"><input type="checkbox" value="jads" id="jads"> JavaScript Algorithms and Data Structures</label>
+                    <label for="fdl"><input type="checkbox" value="fdl" id="fdl"> Front End Development Libraries</label>
+                    <label for="dv"><input type="checkbox" value="dv" id="dv"> Data Visualization</label>
+                    <label for="rd"><input type="checkbox" value="rd" id="rd"> Relational Database</label>
+                    <label for="bda"><input type="checkbox" value="bda" id="bda"> Back End Development and APIs</label>
+                    <label for="qa"><input type="checkbox" value="qa" id="qa"> Quality Assurance</label>
+                    <label for="scp"><input type="checkbox" value="scp" id="scp"> Scientefic Computing with Python</label>
+                    <label for="dap"><input type="checkbox" value="dap" id="dap"> Data Analysis with Python</label>
+                    <label for="is"><input type="checkbox" value="is" id="is"> Information Security</label>
+                    <label for="mlp"><input type="checkbox" value="mlp" id="mlp"> Machine Learning with Python</label>
+                </div>
+            </fieldset>
+            <fieldset id="feedback-container">
+                <label for="feedback">Would you like to give any other feedback?<textarea name=" feedback" id="feedback" placeholder="It would be amazing if you added cats in the website..."></textarea></label>
+            </fieldset>
+            <div id="submit-container">
+                <input type="submit" id="submit">
+            </div>
+        </form>
+    </main>
+    <footer>
+        <div>
+            <p>This project was made as a certification project for <a href="https://freeCodeCamp.org/">freeCodeCamp</a> <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/">Responsive Web Design Certification.</a></p>
+        </div>
+        <div id="attributions">
+            <p id="text">Attributions:</p>
+            <p class="att-text"><a href="https://cdn.freecodecamp.org/platform/universal/fcc_primary.svg">Logo</a> from <a href="https://freecodecamp.org/">freeCodeCamp official website</a></p>
+            <p class="att-text">Fonts from <a href="https://fonts.google.com/">Google Fonts</a></p>
+            <p class="att-text"><a href="https://unsplash.com/photos/_UeY8aTI6d0">Background image</a> for the webpage from <a href="https://unsplash.com/@szolkin">Sergey Zolkin</a> on <a href="https://unsplash.com/">Unslpash</a></p>
+        </div>
+    </footer>
+</body>
+
+</html>
