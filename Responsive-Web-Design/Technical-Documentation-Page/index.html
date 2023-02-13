@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random — Generate pseudo-random numbers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="https://www.python.org/static/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+    <header class="top-header">
+        <div class="head">
+            <div class="hamburger">
+                <span class="bar"></span>
+            </div>
+            <div class="logo-container">
+                <a href="https:/python.org/" class="logo"></a>
+            </div>
+        </div>
+        <div class="doc-heading">
+            <a href="https: //docs.python.org/3/index.html" target="_blank">3.11.1 Documentation</a><a href="https: //docs.python.org/3/library/index.html" target="_blank">The Python Standard Library</a><a href="https: //docs.python.org/3/library/numeric.html" target="_blank">Numeric and Mathematical Modules</a><a href="">Random</a>
+        </div>
+    </header>
+    <main class="main-doc" id="main-doc">
+        <nav class="sidebar" id="navbar">
+            <header class="toc">
+                <h3>
+                    Table of contents
+                </h3>
+            </header>
+            <div class="toc-content">
+                <a id="r" href="#random_—_Generate_pseudo-random_numbers" onclick="close_sidebar()" class="nav-link">
+                    random — Generate pseudo-random numbers
+                </a>
+                <a href="#Bookkeeping_functions" onclick="close_sidebar()" class="nav-link">
+                    Bookkeeping functions
+                </a>
+                <a href="#Functions_for_bytes" onclick="close_sidebar()" class="nav-link">
+                    Functions for bytes
+                </a>
+                <a href="#Functions_for_integers" onclick="close_sidebar()" class="nav-link">
+                    Functions for integers
+                </a>
+                <a href="#Functions_for_sequences" onclick="close_sidebar()" class="nav-link">
+                    Functions for sequences
+                </a>
+                <a href="#Real-valued_distributions" onclick="close_sidebar()" class="nav-link">
+                    Real-valued distributions
+                </a>
+                <a href="#Alternative_Generator" onclick="close_sidebar()" class="nav-link">
+                    Alternative Generator
+                </a>
+                <a href="#Notes_on_Reproducibility" onclick="close_sidebar()" class="nav-link">
+                    Notes on Reproducibility
+                </a>
+            </div>
+        </nav>
+        <div class="content" id="main-content" onclick="close_sidebar()">
+            <section id="random_—_Generate_pseudo-random_numbers" class="main-section">
+                <header class="section-header">
+                    <h1>random — Generate pseudo-random numbers</h1>
+                </header>
+                <hr>
+                <p>This module implements pseudo-random number generators for various distributions.</p>
+                <br>
+                <p>For integers, there is uniform selection from a range. For sequences, there is uniform selection of a random element, a function to generate a random permutation of a list in-place, and a function for random sampling without replacement.</p>
+                <br>
+                <p>On the real line, there are functions to compute uniform, normal (Gaussian), lognormal, negative exponential, gamma, and beta distributions. For generating distributions of angles, the von Mises distribution is available.</p>
+                <br>
+                <p>Almost all module functions depend on the basic function <code>random()</code> , which generates a random float uniformly in the half-open range <code>0.0 <= X < 1.0</code>. Python uses the Mersenne Twister as the core generator. It produces 53-bit precision floats and has a period of 2**19937-1. The underlying implementation in C is both fast and threadsafe. The Mersenne Twister is one of the most extensively tested random number generators in existence. However, being completely deterministic, it is not suitable for all purposes, and is completely unsuitable for cryptographic purposes.</p>
+                <br>
+                <p>The functions supplied by this module are actually bound methods of a hidden instance of the <code>random.Random</code> class. You can instantiate your own instances of Random to get generators that don’t share state.</p>
+                <br>
+                <p>Class Random can also be subclassed if you want to use a different basic generator of your own devising: in that case, override the <code>random()</code>, <code>seed()</code>, <code>getstate()</code>, and <code>setstate()</code> methods. Optionally, a new generator can supply a <code>getrandbits()</code> method — this allows <code>randrange()</code> to produce selections over an arbitrarily large range.</p>
+                <br>
+                <p>The random module also provides the <code>SystemRandom</code> class which uses the system function <code>os.urandom()</code> to generate random numbers from sources provided by the operating system.</p>
+            </section>
+            <section id="Bookkeeping_functions" class="main-section">
+                <header class="section-header">
+                    <h2>Bookkeeping functions</h2>
+                </header>
+                <hr>
+                <h3><code>random.seed(a=None, version=2)</code></h3>
+                <ul>
+                    <li>
+                        Initialize the random number generator.
+                    </li>
+                    <br>
+                    <li>
+                        If <i>a</i> is omitted or <code>None</code>, the current system time is used. If randomness sources are provided by the operating system, they are used instead of the system time (see the <code>os.urandom()</code> function for details on availability).
+                    </li>
+                    <br>
+                    <li>
+                        If <i>a</i> is an int, it is used directly.
+                    </li>
+                    <br>
+                    <li>
+                        With version 2 (the default), a <code>str</code>, <code>bytes</code>, or <code>bytearray</code> object gets converted to an <code>int</code> and all of its bits are used.
+                    </li>
+                    <br>
+                    <li>
+                        With version 1 (provided for reproducing random sequences from older versions of Python), the algorithm for <code>str</code> and <code>bytes</code> generates a narrower range of seeds.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.2: </i> Moved to the version 2 scheme which uses all of the bits in a string seed.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.11: </i> The <i>seed</i> must be one of the following types: <i>NoneType</i>, <code>int</code>, <code>float</code>, <code>str</code>, <code>bytes</code> or <code>bytearray</code>
+                    </li>
+                </ul>
+                <h3><code>random.getstate()</code></h3>
+                <ul>
+                    <li>
+                        Return an object capturing the current internal state of the generator. This object can be passed to <code>setstate()</code> to restore the state.
+                    </li>
+                </ul>
+                <h3><code>random.setstate(state)</code></h3>
+                <ul>
+                    <li>
+                        <i>state</i> should have been obtained from a previous call to <code>getstate()</code>, and <code>setstate()</code> restores the internal state of the generator to what it was at the time <code>getstate()</code> was called.
+                    </li>
+                </ul>
+            </section>
+            <section id="Functions_for_bytes" class="main-section">
+                <header class="section-header">
+                    <h2>Functions for bytes</h2>
+                </header>
+                <hr>
+                <h3><code>random.randbytes(n)</code></h3>
+                <ul>
+                    <li>
+                        Generate <i>n</i> random bytes.
+                    </li>
+                    <br>
+                    <li>
+                        This method should not be used for generating security tokens. Use <code>secrets.token_bytes()</code> instead.
+                    </li>
+                    <br>
+                    <li>
+                        <i>New in version 3.9.</i>
+                    </li>
+                </ul>
+            </section>
+            <section id="Functions_for_integers" class="main-section">
+                <header class="section-header">
+                    <h2>Functions for integers</h2>
+                </header>
+                <hr>
+                <h3><code>random.randrange(stop)</code></h3>
+                <h3><code>random.randrange(start, stop[, step])</code></h3>
+                <ul>
+                    <li>
+                        Return a randomly selected element from <code>range(start, stop, step)</code>. This is equivalent to <code>choice(range(start, stop, step))</code>, but doesn't actually build a range object.
+                    </li>
+                    <br>
+                    <li>
+                        The positional argument pattern matches that of <code>range()</code>. Keyword arguments should not be used because the function may use them in unexpected ways.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.2: </i> <code>randrange()</code> is more sophisticated about producing equally distributed values. Formerly it used a style like <code>int(random()*n)</code> which could produce slightly uneven distributions.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Deprecated since version 3.10: </i> The automatic conversion of non-integer types to equivalent integers is deprecated. Currently <code>randrange(10.0)</code> is losslessly converted to <code>randrange(10)</code>. In the future, this will raise a <code>TypeError</code>.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Deprecated since version 3.10: </i> The exception raised for non-integral values such as <code>randrange(10.5)</code> or <code>randrange('10')</code> will be changed from <code>ValueError</code> to <code>TypeError</code>.
+                    </li>
+                </ul>
+                <h3><code>random.randint(a, b)</code></h3>
+                <ul>
+                    <li>
+                        Return a random integer <i>N</i> such that <code>a <= N <= b</code>. Alias for <code>randrange(a, b+1)</code>
+                    </li>
+                </ul>
+                <h3><code>random.getrandbits(k)</code></h3>
+                <ul>
+                    <li>
+                        Returns a non-negative Python integer with <i>k</i> random bits. This method is supplied with the MersenneTwister generator and some other generators may also provide it as an optional part of the API. When available, <code>getrandbits()</code> enables <code>randrange()</code> to handle arbitrarily large ranges.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.9: </i> This method now accepts zero for <i>k</i>.
+                    </li>
+                </ul>
+            </section>
+            <section id="Functions_for_sequences" class="main-section">
+                <header class="section-header">
+                    <h2>Functions for sequences</h2>
+                </header>
+                <hr>
+                <h3><code>random.choice(seq)</code></h3>
+                <ul>
+                    <li>
+                        Return a random element from the non-empty sequence <i>seq</i>. If <i>seq</i> is empty, raises <code>IndexError</code>.
+                    </li>
+                </ul>
+                <h3><code>random.choices(population, weights=None, *, cum_weights=None, k=1)</code></h3>
+                <ul>
+                    <li>
+                        Return a <i>k</i> sized list of elements chosen from the population with replacement. If the population is empty, raises <code>IndexError</code>.
+                    </li>
+                    <br>
+                    <li>
+                        If a weights sequence is specified, selections are made according to the relative weights. Alternatively, if a cum_weights sequence is given, the selections are made according to the cumulative weights (perhaps computed using <code>itertools.accumulate()</code>). For example, the relative weights <code>[10, 5, 30, 5]</code> are equivalent to the cumulative weights <code>[10, 15, 45, 50]</code>. Internally, the relative weights are converted to cumulative weights before making selections, so supplying the cumulative weights saves work.
+                    </li>
+                    <br>
+                    <li>
+                        If neither <i>weights</i> nor <i>cum_weights</i> are specified, selections are made with equal probability. If a weights sequence is supplied, it must be the same length as the <code>population</code> sequence. It is a <code>TypeError</code> to specify both <code>weights</code> and <code>cum_weights</code>.
+                    </li>
+                    <br>
+                    <li>
+                        The <code>weights</code> or <code>cum_weights</code> can use any numeric type that interoperates with the <code>float</code> values returned by <code>random()</code> (that includes integers, floats, and fractions but excludes decimals). Weights are assumed to be non-negative and finite. A <code>ValueError</code> is raised if all weights are zero.
+                    </li>
+                    <br>
+                    <li>
+                        For a given seed, the <code>choices()</code> function with equal weighting typically produces a different sequence than repeated calls to <code>choices()</code>. The algorithm used by <code>choices()</code> uses floating point arithmetic for internal consistency and speed. The algorithm used by <code>choices()</code> defaults to integer arithmetic with repeated selections to avoid small biases from round-off error.
+                    </li>
+                    <br>
+                    <li>
+                        <i>New in version 3.6.</i>
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.9: </i> Raises a <code>ValueError</code> if all weights are zero.
+                    </li>
+                </ul>
+                <h3><code>random.shuffle(x)</code></h3>
+                <ul>
+                    <li>
+                        Shuffle the sequence <i>x</i> in place.
+                    </li>
+                    <br>
+                    <li>
+                        To shuffle an immutable sequence and return a new shuffled list, use <code>sample(x, k=len(x))</code> instead.
+                    </li>
+                    <br>
+                    <li>
+                        Note that even for small <code>len(x)</code>, the total number of permutations of x can quickly grow larger than the period of most random number generators. This implies that most permutations of a long sequence can never be generated. For example, a sequence of length 2080 is the largest that can fit within the period of the Mersenne Twister random number generator.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Deprecated since version 3.9, removed in version 3.11: </i> The optional parameter <i>random.</i>
+                    </li>
+                </ul>
+                <h3><code>random.sample(population, k, *, counts=None)</code></h3>
+                <ul>
+                    <li>
+                        Return a <i>k</i> length list of unique elements chosen from the population sequence. Used for random sampling without replacement.
+                    </li>
+                    <br>
+                    <li>
+                        Returns a new list containing elements from the population while leaving the original population unchanged. The resulting list is in selection order so that all sub-slices will also be valid random samples. This allows raffle winners (the sample) to be partitioned into grand prize and second place winners (the subslices).
+                    </li>
+                    <br>
+                    <li>
+                        Members of the population need not be <code>hashable</code> or unique. If the population contains repeats, then each occurrence is a possible selection in the sample.
+                    </li>
+                    <br>
+                    <li>
+                        Repeated elements can be specified one at a time or with the optional keyword-only counts parameter. For example, <code>sample(['red', 'blue'], counts=[4, 2], k=5)</code> is equivalent to <code>sample(['red', 'red', 'red', 'red', 'blue', 'blue'], k=5)</code>.
+                    </li>
+                    <br>
+                    <li>
+                        To choose a sample from a range of integers, use a <code>range()</code> object as an argument. This is especially fast and space efficient for sampling from a large population: <code>sample(range(10000000), k=60)</code>.
+                    </li>
+                    <br>
+                    <li>
+                        If the sample size is larger than the population size, a <code>ValueError</code> is raised.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.9: </i> Added the <i>counts</i> parameter.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.11: </i> The <i>population</i> must be a sequence. Automatic conversion of sets to lists is no longer supported.
+                    </li>
+                </ul>
+            </section>
+            <section id="Real-valued_distributions" class="main-section">
+                <header class="section-header">
+                    <h2>Real-valued distributions</h2>
+                </header>
+                <hr>
+                <h3><code>random.random()</code></h3>
+                <ul>
+                    <li>
+                        Return the next random floating point number in the range <code>0.0 <= X < 1.0</code>
+                    </li>
+                </ul>
+                <h3><code>random.uniform(a, b)</code></h3>
+                <ul>
+                    <li>
+                        Return a random floating point number <i>N</i> such that <code>a <= N <= b</code> for <code>a <= b</code> and <code>b <= N <= a</code> for <code>b < a</code>.
+                    </li>
+                    <br>
+                    <li>
+                        The end-point value <code>b</code> may or may not be included in the range depending on floating-point rounding in the equation <code>a + (b-a) * random()</code>.
+                    </li>
+                </ul>
+                <h3><code>random.triangular(low, high, mode)</code></h3>
+                <ul>
+                    <li>
+                        Return a random floating point number <i>N</i> such that <code>low <= N <= high</code> and with the specified <code>mode</code> between those bounds. The <code>low</code> and <code>high</code> bounds default to zero and one. The mode argument defaults to the midpoint between the bounds, giving a symmetric distribution.
+                    </li>
+                </ul>
+                <h3><code>random.betavariate(alpha, beta)</code></h3>
+                <ul>
+                    <li>
+                        Beta distribution. Conditions on the parameters are <code>alpha > 0</code> and <code>beta > 0</code>. Returned values range between 0 and 1.
+                    </li>
+                </ul>
+                <h3><code>random.expovariate(lambd)</code></h3>
+                <ul>
+                    <li>
+                        Exponential distribution. lambd is 1.0 divided by the desired mean. It should be nonzero. (The parameter would be called “lambda”, but that is a reserved word in Python.) Returned values range from 0 to positive infinity if <i>lambd</i> is positive, and from negative infinity to 0 if <i>lambd</i> is negative.
+                    </li>
+                </ul>
+                <h3><code>random.gammavariate(alpha, beta)</code></h3>
+                <ul>
+                    <li>
+                        Gamma distribution. (Not the gamma function!) Conditions on the parameters are <code>alpha > 0</code> and <code>beta > 0</code>.
+                    </li>
+                    <br>
+                    <li>
+                        The probability distribution function is:
+                    </li>
+                    <br>
+                    <li>
+                        <pre>          x ** (alpha - 1) * math.exp(-x / beta)
+    pdf(x) =  --------------------------------------
+                math.gamma(alpha) * beta ** alpha</pre>
+                    </li>
+                </ul>
+                <h3><code>random.gauss(mu=0.0, sigma=1.0)</code></h3>
+                <ul>
+                    <li>
+                        Normal distribution, also called the Gaussian distribution. <i>mu</i> is the mean, and <i>sigma</i> is the standard deviation. This is slightly faster than the <code>normalvariate()</code> function defined below.
+                    </li>
+                    <br>
+                    <li>
+                        Multithreading note: When two threads call this function simultaneously, it is possible that they will receive the same return value. This can be avoided in three ways. 1) Have each thread use a different instance of the random number generator. 2) Put locks around all calls. 3) Use the slower, but thread-safe <code>normalvariate()</code> function instead.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Changed in version 3.11: mu </i> and <i>sigma</i> now have default arguments.
+                    </li>
+                </ul>
+                <h3><code>random.vonmisesvariate(mu, kappa)</code></h3>
+                <ul>
+                    <li>
+                        <i>mu </i> is the mean angle, expressed in radians between 0 and 2*<i>pi</i>, and <i>kappa</i> is the concentration parameter, which must be greater than or equal to zero. If <i>kappa</i> is equal to zero, this distribution reduces to a uniform random angle over the range 0 to 2*<i>pi</i>.
+                    </li>
+                </ul>
+                <h3><code>random.paretovariate(alpha)</code></h3>
+                <ul>
+                    <li>
+                        Pareto distribution. <i>alpha</i> is the shape parameter.
+                    </li>
+                </ul>
+                <h3><code>random.weibullvariate(alpha, beta)</code></h3>
+                <ul>
+                    <li>
+                        Weibull distribution. <i>alpha</i> is the scale parameter and <i>beta</i> is the shape parameter.
+                    </li>
+                </ul>
+            </section>
+            <section id="Alternative_Generator" class="main-section">
+                <header class="section-header">
+                    <h2>Alternative Generator</h2>
+                </header>
+                <hr>
+                <h3><i>class</i> <code>random.Random([seed])</code></h3>
+                <ul>
+                    <li>
+                        Class that implements the default pseudo-random number generator used by the <code>random</code> module.
+                    </li>
+                    <br>
+                    <li>
+                        <i>Deprecated since version 3.9: </i> In the future, the <i>seed</i> must be one of the following types: <code>NoneType</code>, <code>int</code>, <code>float</code>, <code>str</code>, <code>bytes</code> or <code>bytearray</code>.
+                    </li>
+                </ul>
+                <h3><i>class</i> <code>random.SystemRandom([seed])</code></h3>
+                <ul>
+                    <li>
+                        Class that uses the <code>os.urandom()</code> function for generating random numbers from sources provided by the operating system. Not available on all systems. Does not rely on software state, and sequences are not reproducible. Accordingly, the <code>seed()</code> method has no effect and is ignored. The <code>getstate()</code> and <code>setstate()</code> methods raise <code>NotImplementedError</code> if called.
+                    </li>
+                </ul>
+            </section>
+            <section id="Notes_on_Reproducibility" class="main-section">
+                <header class="section-header">
+                    <h2>Notes on Reproducibility</h2>
+                </header>
+                <hr>
+                <p>Sometimes it is useful to be able to reproduce the sequences given by a pseudo-random number generator.</p>
+                <p>By re-using a seed value, the same sequence should be reproducible from run to run as long as multiple threads are not running.</p>
+                <br>
+                <p>Most of the random module's algorithms and seeding functions are subject to change across Python versions, but two aspects are guaranteed not to change:</p>
+                <ul>
+                    <li>
+                        If a new seeding method is added, then a backward compatible seeder will be offered.
+                    </li>
+                    <li>
+                        The generator's <code>random()</code> method will continue to produce the same sequence when the compatible seeder is given the same seed.
+                    </li>
+                    <br>
+                </ul>
+                <hr>
+            </section>
+            <div class="footer">
+                <br>
+                <p>This web page was made as a certification project for <a href="https://www.freecodecamp.org/" target="_blank">freeCodeCamp</a>'s <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" target="_blank">Responsive Web Desgin Certification</a></p>
+                <br>
+                <h4>Attributions:</h4>
+                <ul>
+                    <li>
+                        Documentation from <a href="https://docs.python.org/3/library/random.html" target="_blank">Python's official docs for <code>random</code> module</a>
+                    </li>
+                    <li>
+                        <a href="https://www.python.org/static/community_logos/python-logo-generic.svg" target="_blank">Desktop/Tablet Logo</a> and <a href="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" target="_blank">Mobile Logo</a> from <a href="https://www.python.org/community/logos/" target="_blank">Python's Logo Page</a>
+                    </li>
+                </ul>
+                <br>
+            </div>
+        </div>
+        <script>
+            var checkbox = document.querySelector(".sidebar-toggle")
+            var html = document.querySelector("html")
+            checkbox.addEventListener("click", function () {
+                if (checkbox.checked == true) {
+                    window.scrollY = 0;
+                    html.style.overflowY = "hidden"
+                }
+                if (checkbox.checked == false) {
+                    html.style.overflowY = "auto"
+                }
+
+            })
+            function close_sidebar() {
+                if (checkbox.checked == true) {
+                    checkbox.checked = false
+                    html.style.overflowY = "auto"
+                }
+            }
+
+        </script>
+    </main>
+</body>
+
+</html>
