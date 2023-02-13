@@ -1,0 +1,516 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alata&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Fira Sans", "PT Sans", "Rubik", "Alata";
+}
+
+html,
+body {
+  height: 100%;
+  background-color: rgb(27, 27, 50);
+  background-image: url("https://cdn.discordapp.com/attachments/1071816144203296769/1072056700527448064/sergey-zolkin-_UeY8aTI6d0-unsplash.jpg");
+  background-size: cover;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+body {
+  overflow-x: hidden;
+  scrollbar-color: rgb(27, 27, 50) rgb(10, 10, 35);
+}
+body::-webkit-scrollbar-track {
+  background: rgb(10, 10, 35);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(27, 27, 50);
+  border: 3px solid rgb(10, 10, 35);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(37, 37, 60);
+}
+
+/* HEADER */
+
+header {
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(10, 10, 35);
+}
+
+.logo-container {
+  width: 30%;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(10, 10, 35);
+}
+
+.logo-container > a {
+  width: max-content;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logo {
+  height: 20px;
+  width: 100%;
+}
+
+.navbar {
+  background-color: rgb(10, 10, 35);
+  height: 2.2rem;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-item {
+  height: 100%;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.nav-links {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  box-sizing: border-box;
+}
+
+.nav-links:hover {
+  background-color: rgba(240, 248, 255, 0.9);
+  color: rgb(10, 10, 35);
+}
+
+.nav-links:active {
+  background-color: rgb(220, 228, 235);
+}
+
+/* MAIN */
+main {
+  height: max-content;
+  background-color: rgba(27, 27, 50, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+/* TITLE AND DESCRIPTION */
+
+.title-and-text {
+  height: 15%;
+  min-height: 5rem;
+  width: 100%;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+
+.title,
+.description {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title > h1 {
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  font-size: 35px;
+}
+
+/* FORM */
+#survey-form {
+  height: max-content;
+  width: 90vw;
+  max-width: 700px;
+  align-self: center;
+  margin: 5px 0 25px 0;
+  background-color: rgba(37, 37, 60, 0.8);
+  box-shadow: 0 0 200px 0 rgb(27, 27, 50);
+  border-radius: 3px;
+}
+
+#name-email-age {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 30px;
+  border: none;
+}
+label,
+input {
+  box-sizing: border-box;
+  color: aliceblue;
+  font-family: "Fira Sans", "PT Sans", "Rubik", "Alata";
+}
+
+label {
+  font-size: 20px;
+  margin: 12px 0;
+}
+#name-email-age label > p {
+  display: inline;
+  font-size: 16px;
+  color: rgb(226, 234, 241);
+}
+#name-email-age input {
+  width: 100%;
+  margin: 7px 0 0 0;
+  height: 2.2rem;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: rgb(77, 77, 100);
+  padding: 0 10px;
+  letter-spacing: 1px;
+}
+
+#name-email-age input::placeholder {
+  font-family: "Fira Sans", "PT Sans", "Rubik", "Alata";
+  font-size: 16px;
+  letter-spacing: 0;
+  vertical-align: middle;
+  color: rgba(240, 248, 255, 0.6);
+}
+
+#name-email-age input:focus {
+  border: 2px solid aliceblue;
+}
+
+#name-email-age input:hover {
+  background-color: rgb(87, 87, 110);
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+#dropdowns {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 30px;
+  border: none;
+}
+
+#dropdowns label {
+  width: 100%;
+}
+
+#dropdowns select {
+  width: 100%;
+  margin: 7px 0 0 0;
+  height: 2.2rem;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: rgb(77, 77, 100);
+  padding: 0 10px;
+  box-sizing: border-box;
+  color: rgba(240, 248, 255, 0.6);
+  font-family: "Fira Sans", "PT Sans", "Rubik", "Alata";
+  cursor: pointer;
+  font-size: 16px;
+}
+
+option {
+  color: aliceblue;
+  font: inherit;
+}
+
+#radios-and-checkboxes {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 30px;
+  border: none;
+}
+
+#recommendation-text {
+  width: 100%;
+}
+
+#user-recommend {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+#user-recommend label {
+  margin: 5px 0;
+  font-size: 16px;
+}
+#user-recommend label:first-of-type {
+  margin-top: 12px;
+}
+
+#user-recommend p {
+  color: aliceblue;
+  font-size: 20px;
+  cursor: default;
+}
+
+#certification {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+#certification label {
+  margin: 5px 0;
+  font-size: 16px;
+}
+#certification label:first-of-type {
+  margin-top: 12px;
+}
+
+#certification p {
+  color: aliceblue;
+  font-size: 20px;
+  margin-top: 12px;
+  cursor: default;
+}
+
+#feedback-container {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 30px;
+  border: none;
+}
+
+#feedback-container p {
+  color: aliceblue;
+  font-size: 20px;
+  margin-top: 12px;
+  cursor: default;
+}
+
+#feedback-container label {
+  margin: 12px 0;
+  font-size: 16px;
+}
+#feedback-container textarea {
+  height: 5rem;
+  width: 100%;
+  margin: 7px 0 0 0;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: rgb(77, 77, 100);
+  padding: 10px 10px;
+  letter-spacing: 1px;
+  color: aliceblue;
+  box-sizing: border-box;
+}
+
+#feedback-container textarea::placeholder {
+  letter-spacing: 1px;
+  font-family: "Fira Sans", "PT Sans", "Rubik", "Alata";
+  font-size: 16px;
+  vertical-align: middle;
+  color: rgba(240, 248, 255, 0.6);
+}
+#submit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5rem;
+  padding: 15px 30px;
+}
+
+#submit {
+  cursor: pointer;
+  height: 3rem;
+  width: 100%;
+  background-color: rgb(27, 27, 50);
+  border: none;
+  font-size: 20px;
+}
+
+#submit:hover {
+  border: 2px solid rgb(10, 10, 35);
+  color: rgb(10, 10, 35);
+  background-color: aliceblue;
+}
+
+#radios-and-checkboxes label {
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: rgb(10, 10, 35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer > div {
+  background-color: rgb(10, 10, 35);
+  width: 100%;
+  color: rgba(240, 248, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+footer p {
+  font-size: 15px;
+}
+footer a {
+  color: rgba(240, 248, 255, 0.6);
+}
+
+footer a:hover {
+  color: aliceblue;
+}
+
+footer a:active {
+  color: rgb(255, 255, 255);
+}
+
+#text {
+  margin: 0 0 15px 0;
+  font-size: 20px;
+}
+
+.att-text {
+  margin: 5px 0;
+}
+footer p:first-of-type {
+  margin: auto 10px;
+}
+
+footer p {
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+  }
+  .logo-container {
+    width: 100%;
+  }
+  .navbar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    font-size: 14px;
+  }
+
+  .title > h1 {
+    font-size: 25px;
+  }
+
+  #description {
+    font-size: 13px;
+  }
+  label {
+    font-size: 15px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 12px;
+  }
+  #name-email-age label > p {
+    font-size: 12px;
+  }
+  #radios-and-checkboxes p {
+    font-size: 15px;
+  }
+  #radios-and-checkboxes label {
+    font-size: 12px;
+  }
+  select,
+  textarea,
+  input {
+    font-size: 14px;
+  }
+  select::placeholder,
+  textarea::placeholder,
+  input::placeholder {
+    font-size: 14px;
+  }
+  footer p,
+  footer a {
+    font-size: 12px;
+  }
+  #text {
+    font-size: 15px;
+  }
+}
+@media (max-width: 370px) {
+  .nav-links {
+    font-size: 10px;
+  }
+
+  .title > h1 {
+    font-size: 20px;
+  }
+
+  #description {
+    font-size: 10px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 12px;
+  }
+
+  #radios-and-checkboxes p {
+    font-size: 12px;
+  }
+  #radios-and-checkboxes label {
+    font-size: 10px;
+  }
+  #name-email-age label > p {
+    font-size: 10px;
+  }
+  select::placeholder,
+  textarea::placeholder,
+  input::placeholder {
+    font-size: 12px;
+  }
+
+  footer p,
+  footer a {
+    font-size: 8px;
+  }
+
+  #text {
+    font-size: 12px;
+  }
+}
