@@ -1,0 +1,390 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+html {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+/* HEADER */
+header.top-header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 11;
+  pointer-events: none;
+  position: fixed;
+  background-color: white;
+  margin-top: -80px;
+}
+/* HEADER_IN */
+
+div.head {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid grey;
+}
+
+div.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 180px;
+}
+
+a.logo {
+  height: 70%;
+  width: 70%;
+  background-image: url("https://www.python.org/static/community_logos/python-logo-generic.svg");
+  background-size: cover;
+}
+
+/* HAMBURGER */
+.hamburger {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s;
+  padding: 10px 15px;
+  display: none;
+  cursor: pointer;
+}
+
+.bar,
+.bar::before,
+.bar::after {
+  content: "";
+  height: 2px;
+  width: 25px;
+  background-color: grey;
+  transition: all 0.3s;
+  position: absolute;
+}
+
+.bar::before {
+  margin-top: -10px;
+}
+.bar::after {
+  margin-top: 10px;
+}
+
+/* DOCUMENTATION_HEADING */
+div.doc-heading {
+  pointer-events: all;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 5px 10px;
+  font-size: 15px;
+  overflow-x: auto;
+  gap: 0.5em;
+}
+
+div.doc-heading::-webkit-scrollbar {
+  display: none;
+}
+
+div.doc-heading a {
+  color: black;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  padding-inline: 0.5em;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+div.doc-heading a:nth-child(n + 2)::before {
+  content: "»";
+  position: absolute;
+  left: -0.5em;
+  color: black;
+  text-decoration: none;
+}
+
+div.doc-heading a:hover {
+  color: rgb(50, 50, 255);
+  text-decoration: underline;
+}
+
+/* MAIN */
+
+main.main-doc {
+  display: flex;
+  width: 100vw;
+  margin-top: 80px;
+}
+
+/* SIDEBAR */
+
+nav.sidebar {
+  height: 100%;
+  width: 300px;
+  border-right: 1px solid grey;
+  transition: all 0.3s;
+  background-color: white;
+  z-index: 10;
+  position: fixed;
+}
+
+header.toc {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  cursor: default;
+  font-size: 22px;
+}
+
+header.toc > h3 {
+  font-weight: normal;
+}
+
+div.toc-content {
+  display: flex;
+  overflow-y: scroll;
+  flex-direction: column;
+  height: 100%;
+}
+
+div.toc-content > a {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px solid grey;
+}
+
+div.toc-content > a:first-of-type {
+  border-top: 1px solid grey;
+}
+
+div.toc-content > a:hover {
+  background-color: rgb(200, 200, 200);
+  text-decoration: underline;
+  color: rgb(50, 50, 255);
+}
+
+div.toc-content::-webkit-scrollbar {
+  width: 0;
+}
+
+/* CHECKBOX HAX */
+input.sidebar-toggle {
+  width: 60px;
+  height: 50px;
+  position: fixed;
+  margin-top: -80px;
+  opacity: 0;
+  display: none;
+  cursor: pointer;
+}
+
+/* CONTENT */
+
+div.content {
+  width: 100%;
+  padding: 20px 200px 20px 20px;
+  transition: all 0.3s;
+  margin-left: 300px;
+}
+
+header.section-header > h1,
+header.section-header > h2,
+.main-section h3 {
+  font-weight: normal;
+}
+
+header.section-header > h1 > a {
+  color: black;
+  text-decoration: none;
+}
+header.section-header > h1 > a:hover {
+  color: rgb(50, 50, 255);
+  text-decoration: underline;
+}
+
+header.section-header > h1 {
+  font-size: 28px;
+}
+
+header.section-header > h2 {
+  margin-top: 20px;
+}
+
+hr {
+  margin: 10px 0;
+  border: 1px solid grey;
+}
+
+code {
+  background-color: rgb(230, 230, 230);
+  color: rgb(200, 0, 0);
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: monospace;
+}
+
+h3 > code {
+  color: black;
+  font-size: 17px;
+}
+
+ul {
+  list-style-type: none;
+}
+li {
+  margin-left: 20px;
+}
+
+li:first-of-type {
+  margin-top: 10px;
+}
+
+li:last-of-type {
+  margin-bottom: 10px;
+}
+
+li pre {
+  color: rgb(20, 20, 20);
+  background-color: greenyellow;
+  border: 1px solid limegreen;
+  font-family: monospace;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#Notes_on_Reproducibility ul {
+  list-style-type: disc;
+}
+
+/* MEDIA */
+
+@media (max-width: 821px) {
+  /* LOGO */
+  div.logo-container {
+    margin-left: -20px;
+  }
+  /* CONTENT */
+  div.content {
+    padding: 20px 100px 20px 20px;
+    margin-left: 0;
+  }
+
+  /* HAMBURGER */
+  div.hamburger {
+    display: flex;
+  }
+
+  /* CHECKBOX */
+  input.sidebar-toggle {
+    display: inline-block;
+  }
+  input.sidebar-toggle:checked + header > div.head > div.hamburger > .bar {
+    width: 0;
+    height: 0;
+    transition: all 0.1s;
+  }
+
+  input.sidebar-toggle:checked
+    + header
+    > div.head
+    > div.hamburger
+    > .bar::after {
+    margin: 0;
+    transform: rotate(135deg);
+  }
+
+  input.sidebar-toggle:checked
+    + header
+    > div.head
+    > div.hamburger
+    > .bar::before {
+    margin: 0;
+    transform: rotate(-135deg);
+  }
+
+  input.sidebar-toggle:not(checked) ~ main > nav {
+    margin-left: -300px;
+    /* display: none; */
+  }
+  input.sidebar-toggle:checked ~ main > nav {
+    margin-left: 0;
+    /* display: block; */
+  }
+
+  input.sidebar-toggle:checked ~ main > div.content {
+    filter: blur(1px);
+    cursor: default;
+  }
+
+  /* CONTENT */
+  div.content {
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  /* LOGO */
+  div.logo-container {
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    margin: 0;
+  }
+
+  a.logo {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg");
+  }
+  /* CONTENT */
+  div.content {
+    padding: 20px;
+  }
+  /* SIDEBAR */
+  nav.sidebar {
+    width: 100vw;
+  }
+  input.sidebar-toggle:not(checked) ~ main > nav {
+    margin-left: -100vw;
+    /* display: none; */
+  }
+}
+
+.footer {
+  font-size: 14px;
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.footer a {
+  color: black;
+}
+
+.footer a:hover {
+  color: rgb(50, 50, 255);
+  text-decoration: underline;
+}
