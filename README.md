@@ -1,5 +1,5 @@
 <h1>
-    <a href="">freeCodeCamp-Projects</a>
+    <a href="https://github.com/RishitChaudhary/freeCodeCamp-Projects/">freeCodeCamp-Projects</a>
 </h1>
 <p>The List of Projects I made for freeCodeCamp's Certification courses.</p>
 
